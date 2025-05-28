@@ -1,0 +1,10 @@
+{% block sw_cms_element_component_slideimage %}
+    <div class="sw-cms-el-slideimage" :style="badge !== '' ? { border: '1px solid red' } : {}">
+        <div class="image">
+            <img
+                v-bind:src="mediaUrl"
+            >
+        </div>
+        <div>{{ labelValue }}</div>
+    </div>
+{% endblock %}

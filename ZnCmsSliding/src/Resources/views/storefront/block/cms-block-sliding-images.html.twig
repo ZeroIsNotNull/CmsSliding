@@ -1,0 +1,32 @@
+{% block sw_cms_block_image_text_sliding %}
+    {% set sortedData = {} %}
+    {% for key, slot in block.slots %}
+        {% set position = slot.config.position.value %}
+        {% if position > 0 %}
+            {% set sortedData = sortedData|merge({
+                (position): slot
+            }) %}
+        {% endif %}
+    {% endfor %}
+    {% if sortedData is not empty %}
+        <div class="slideimage-row not-overflow" data-initSlideImages="true">
+            <div class="slideimage-row-inside overflow">
+                <div class="train-row"
+                     style="transform: translateX(0px);"
+                     data-transform="0"
+                >
+                    {% for slot in sortedData %}
+                        {% set element = slot %}
+                        {% if element.data.media.url %}
+                            <div class="slideimage">
+                                {% sw_include "@Storefront/storefront/element/slideimage.html.twig" ignore missing %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="left-button slide-button">{% sw_icon 'arrow-head-left' %}</div>
+            <div class="right-button slide-button">{% sw_icon 'arrow-head-right' %}</div>
+        </div>
+    {% endif %}
+{% endblock %}

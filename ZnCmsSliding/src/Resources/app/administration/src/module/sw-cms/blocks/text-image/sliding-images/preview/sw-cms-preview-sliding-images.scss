@@ -1,0 +1,10 @@
+.sw-cms-preview-sliding-images {
+  display: flex;
+  .sliding-image {
+    img {
+      padding: 5px;
+      text-align: center;
+      height: 50px;
+    }
+  }
+}

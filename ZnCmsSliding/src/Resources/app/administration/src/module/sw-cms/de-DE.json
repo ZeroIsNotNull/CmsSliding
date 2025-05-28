@@ -1,0 +1,17 @@
+{
+  "sw-cms": {
+    "elements": {
+      "slideimage": {
+        "label": "Slideimage Text",
+        "labelPosition": "Text Position",
+        "top": "Oben im Bild",
+        "bottom": "Unten im Bild",
+        "center": "In der Bildmitte",
+        "under": "Unterhalb des Bildes"
+      },
+      "sliding-image": {
+        "label": "Sliding Image"
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{% block element_image %}
+    {%  set config = element.fieldConfig.elements %}
+
+
+     <a href="{% if element.data.url %}{{ element.data.url }}{% else %}#{% endif %}" title="{{ element.data.media.translated.title }}" class="slideimage-link">
+         <div class="cms-image-container is-{{ element.translated.config.displayMode.value }}"
+                {% if element.translated.config.minHeight.value and element.translated.config.displayMode.value == "cover" %} style="min-height: {{ element.translated.config.minHeight.value }};"{% endif %}
+                >
+                {% if element.config.badge.value %}
+                    <div class="badge" style="{% if element.config.hex.value %}background:{{element.config.hex.value }};{% endif %}">
+                        {{ element.config.badge.value }}
+                    </div>
+                {% endif %}
+                {% block element_image_media %}
+                    {% set attributes = {
+                        'class': 'cms-image',
+                        'alt': (element.data.media.translated.alt ?: ''),
+                        'title': (element.data.media.translated.title ?: ''),
+                        'loading': 'lazy'
+                    } %}
+
+                    {% if element.translated.config.displayMode.value == 'cover' or element.translated.config.displayMode.value == 'contain' %}
+                        {% set attributes = attributes|merge({ 'data-object-fit': element.translated.config.displayMode.value }) %}
+                    {% endif %}
+
+                    {% sw_thumbnails 'cms-image-thumbnails' with {
+                        media: element.data.media
+                    } %}
+                {% endblock %}
+                <p class="slideimage-text {% if element.config.labelPosition.value %} {{ element.config.labelPosition.value}}{% else %} top {% endif %}">{{ element.config.label.value }}</p>
+            </div>
+        </a>
+{% endblock %}

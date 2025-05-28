@@ -1,0 +1,46 @@
+{
+  "name": "zn/cms-sliding",
+  "description": "CMS-Sliding",
+  "version": "1.1.5",
+  "type": "shopware-platform-plugin",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Nima Sorouri"
+    }
+  ],
+  "require": {
+        "shopware/core": "^6.5.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Zn\\CmsSliding\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "Zn\\CmsSliding\\ZnCmsSliding",
+    "label": {
+      "de-DE": "CMS-Sliding",
+      "en-GB": "CMS Sliding"
+    },
+    "description": {
+      "de-DE": "Sliding Images für die Erlebniswelten",
+      "en-GB": ""
+    },
+    "changelog": {
+      "de-DE": "Vue3 Kompatibilität hergestellt."
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+        "sh bin/build-administration.sh",
+        "sh bin/build-storefront.sh",
+        "bin/console cache:clear"
+    ],
+    "post-update-cmd": [
+        "sh bin/build-administration.sh",
+        "sh bin/build-storefront.sh",
+        "bin/console cache:clear"
+    ]
+  }
+}
